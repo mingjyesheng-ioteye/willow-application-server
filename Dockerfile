@@ -1,6 +1,6 @@
 ARG WAS_UI_TAG="main"
 
-FROM ghcr.io/heywillow/willow-application-server-ui:${WAS_UI_TAG} AS was-ui
+# FROM ghcr.io/heywillow/willow-application-server-ui:${WAS_UI_TAG} AS was-ui
 
 FROM python:3.12.9-alpine3.21
 
@@ -15,7 +15,8 @@ RUN --mount=type=cache,target=/root/.cache pip install -r requirements.txt
 
 COPY . .
 
-COPY --from=was-ui /was-ui/out/ /app/static/admin/
+# COPY --from=was-ui /was-ui/out/ /app/static/admin/
+# copy customized brainbook application server UI in /out to static/admin
 
 RUN PYTHONPATH=/app pytest -s
 
