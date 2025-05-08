@@ -122,6 +122,12 @@ start|run|up)
     docker compose up --remove-orphans "$@"
 ;;
 
+serve)
+    dep_check
+    shift
+    docker compose up -d --remove-orphans "$@"
+;;
+
 stop|down)
     dep_check
     shift
